@@ -1,0 +1,8 @@
+{
+  "seq_len": 4,
+  "dtype": "float32",
+  "layers": [
+    {"layer": 0, "heads": 2, "head_dim": 4},
+    {"layer": 1, "heads": 2, "head_dim": 4}
+  ]
+}

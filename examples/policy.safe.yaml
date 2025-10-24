@@ -1,0 +1,12 @@
+version: 1.0
+model_build_hash: safe-build
+rope_scaling:
+  factor: 1.0
+  position_offset: 0.0
+insertion:
+  tokens: [101, 102, 103, 104]
+policy:
+  verification_key: 11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo=
+  gate:
+    unsafe_token_ids: [666, 777]
+    refusal_token_id: 0
