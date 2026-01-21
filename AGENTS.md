@@ -39,12 +39,11 @@ Since `bd` is unavailable for models, edit `.beads/issues.jsonl` directly:
 
 ### Workflow for AI Agents
 
-1. **Check ready work**: `bd ready` shows unblocked issues
-2. **Claim your task**: `bd update <id> --status in_progress`
+1. **Check ready work**: open `.beads/issues.jsonl` and find issues with `status: ready` and no blockers
+2. **Claim your task**: edit the issue entry to set `status: in_progress`
 3. **Work on it**: Implement, test, document
-4. **Discover new work?** Create linked issue:
-   - `bd create "Found bug" -p 1 --deps discovered-from:<parent-id>`
-5. **Complete**: `bd close <id> --reason "Done"`
+4. **Discover new work?** Add a new JSONL entry with `deps: ["discovered-from:<parent-id>"]`
+5. **Complete**: update the issue entry with `status: closed` and a `reason`
 6. **Commit together**: Always commit the `.beads/issues.jsonl` file together with the code changes so issue state stays in sync with code state
 
 ### Auto-Sync
