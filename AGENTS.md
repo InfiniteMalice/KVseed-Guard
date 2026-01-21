@@ -15,11 +15,14 @@
 
 ### Quick Start (AI models: manual edits)
 
-Since `bd` is unavailable for models, edit `.beads/issues.jsonl` directly:
+Since `bd` is unavailable for models, edit `.beads/issues.jsonl` directly (one valid JSON object per line):
 - **Check for ready work**: open `.beads/issues.jsonl` and look for issues without blockers and with a status of `ready`.
 - **Create new issues**: add a new JSONL entry with the appropriate `type`, `priority`, and `deps` (e.g., `discovered-from:bd-123`).
 - **Claim and update**: update the issue entry with `status: in_progress` or adjust `priority` as needed.
 - **Complete work**: update the issue entry with `status: closed` and a `reason`.
+
+Example:
+{"id":"bd-123","type":"task","status":"ready","priority":2,"deps":[],"title":"..."}
 
 ### Issue Types
 
@@ -53,7 +56,8 @@ bd automatically syncs with git when available, but since AI models cannot run `
 ### GitHub Copilot Integration
 
 If using GitHub Copilot, also create `.github/copilot-instructions.md` for automatic instruction loading.
-Run `bd onboard` to get the content, or see step 2 of the onboard instructions.
+Run `bd onboard` to get the content (human developers), or see step 2 of the onboard instructions.
+If `bd` isn’t available, copy the onboarding text from the instructions directly.
 
 ### MCP Server (Recommended)
 
