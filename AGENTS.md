@@ -4,6 +4,8 @@
 
 **IMPORTANT**: This project uses **bd (beads)** for ALL issue tracking. Do NOT use markdown TODOs, task lists, or other tracking methods.
 
+**Note for AI models**: The `bd` CLI is unavailable in this environment. AI models must **manually edit** the `.beads/issues.jsonl` file directly to add, update, or close issues, keeping it in sync with code changes.
+
 ### Why bd?
 
 - Dependency-aware: Track blockers and relationships between issues
@@ -11,30 +13,13 @@
 - Agent-optimized: JSON output, ready work detection, discovered-from links
 - Prevents duplicate tracking systems and confusion
 
-### Quick Start
+### Quick Start (AI models: manual edits)
 
-**Check for ready work:**
-```bash
-bd ready --json
-```
-
-**Create new issues:**
-```bash
-bd create "Issue title" -t bug|feature|task -p 0-4 --json
-bd create "Issue title" -p 1 --deps discovered-from:bd-123 --json
-bd create "Subtask" --parent <epic-id> --json  # Hierarchical subtask (gets ID like epic-id.1)
-```
-
-**Claim and update:**
-```bash
-bd update bd-42 --status in_progress --json
-bd update bd-42 --priority 1 --json
-```
-
-**Complete work:**
-```bash
-bd close bd-42 --reason "Completed" --json
-```
+Since `bd` is unavailable for models, edit `.beads/issues.jsonl` directly:
+- **Check for ready work**: open `.beads/issues.jsonl` and look for issues without blockers and with a status of `ready`.
+- **Create new issues**: add a new JSONL entry with the appropriate `type`, `priority`, and `deps` (e.g., `discovered-from:bd-123`).
+- **Claim and update**: update the issue entry with `status: in_progress` or adjust `priority` as needed.
+- **Complete work**: update the issue entry with `status: closed` and a `reason`.
 
 ### Issue Types
 
@@ -64,10 +49,7 @@ bd close bd-42 --reason "Completed" --json
 
 ### Auto-Sync
 
-bd automatically syncs with git:
-- Exports to `.beads/issues.jsonl` after changes (5s debounce)
-- Imports from JSONL when newer (e.g., after `git pull`)
-- No manual export/import needed!
+bd automatically syncs with git when available, but since AI models cannot run `bd`, treat `.beads/issues.jsonl` as the source of truth and edit it directly.
 
 ### GitHub Copilot Integration
 
@@ -129,12 +111,11 @@ For example: `bd create --help` shows `--parent`, `--deps`, `--assignee`, etc.
 
 ### Important Rules
 
-- ✅ Use bd for ALL task tracking
-- ✅ Always use `--json` flag for programmatic use
+- ✅ Use beads issues for ALL task tracking
+- ✅ **AI models** must edit `.beads/issues.jsonl` directly (no `bd` CLI)
 - ✅ Link discovered work with `discovered-from` dependencies
-- ✅ Check `bd ready` before asking "what should I work on?"
+- ✅ Check `.beads/issues.jsonl` before asking "what should I work on?"
 - ✅ Store AI planning docs in `history/` directory
-- ✅ Run `bd <cmd> --help` to discover available flags
 - ❌ Do NOT create markdown TODO lists
 - ❌ Do NOT use external issue trackers
 - ❌ Do NOT duplicate tracking systems
