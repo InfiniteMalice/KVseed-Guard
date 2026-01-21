@@ -4,7 +4,7 @@
 
 **IMPORTANT**: This project uses **bd (beads)** for ALL issue tracking. Do NOT use markdown TODOs, task lists, or other tracking methods.
 
-**Note for AI models**: The `bd` CLI is unavailable in this environment. AI models must **manually edit** the `.beads/issues.jsonl` file directly to add, update, or close issues, keeping it in sync with code changes.
+**Note for AI models**: The `bd` CLI is unavailable in this environment. AI models should use the **beads MCP server** for native function calls (see MCP Server section below). If MCP is unavailable, **manually edit** the `.beads/issues.jsonl` file directly to add, update, or close issues, keeping it in sync with code changes.
 
 ### Why bd?
 
@@ -48,7 +48,7 @@ Since `bd` is unavailable for models, edit `.beads/issues.jsonl` directly:
 
 ### Auto-Sync
 
-bd automatically syncs with git when available, but since AI models cannot run `bd`, treat `.beads/issues.jsonl` as the source of truth and edit it directly.
+Since AI models cannot run `bd`, treat `.beads/issues.jsonl` as the source of truth and edit it directly. The file is the canonical representation of all issues and will be synchronized by human developers or CI when `bd` commands are available.
 
 ### GitHub Copilot Integration
 
@@ -104,6 +104,8 @@ history/
 - ✅ Reduces noise when browsing the project
 
 ### CLI Help
+
+(For human developers with `bd` CLI installed)
 
 Run `bd <command> --help` to see all available flags for any command.
 For example: `bd create --help` shows `--parent`, `--deps`, `--assignee`, etc.
