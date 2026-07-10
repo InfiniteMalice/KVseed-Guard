@@ -1,5 +1,18 @@
 # AI Agent Guidelines
 
+## Required Skills for Agents
+
+- Use `$superpowers` before non-trivial work to select the right specialized workflow and
+  surface repository constraints before editing.
+- Use `$repo-quality-gate` for every non-trivial code change, refactor, architecture change,
+  test change, agent workflow change, reward/scoring change, or repository-maintenance task.
+- Do not skip the quality-gate sequence: task spec, design plan, implementation, tests,
+  quality gate, and final summary.
+- See `docs/REPO_STANDARDS.md` and `docs/BEADS.md` for standards and Beads guidance.
+- If either skill is unavailable in the active agent environment, state that limitation before
+  continuing and follow the closest documented fallback only when the maintainer approves or
+  the task is documentation-only and low risk.
+
 ## Issue Tracking with bd (beads)
 
 **IMPORTANT**: This project uses **bd (beads)** for ALL issue tracking. Do NOT use markdown TODOs, task lists, or other tracking methods.
@@ -116,6 +129,7 @@ For example: `bd create --help` shows `--parent`, `--deps`, `--assignee`, etc.
 
 ### Important Rules
 
+- ✅ Use `$superpowers` and `$repo-quality-gate` for all non-trivial Beads-tracked work
 - ✅ Use beads issues for ALL task tracking
 - ✅ **AI models** must edit `.beads/issues.jsonl` directly (no `bd` CLI)
 - ✅ Link discovered work with `discovered-from` dependencies
